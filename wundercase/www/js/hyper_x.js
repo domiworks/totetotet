@@ -1,11 +1,12 @@
-		var height = $(window).height();
+		var height = ($(window).height()*0.3)+'px';
+
 		
 		$(document).ready(function(){
-			$('.f_elast').css('height', height/3);
+			$('.f_elast').css('height', height);
 		});
 
 	
-
+ 
 		
 		//new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
 
