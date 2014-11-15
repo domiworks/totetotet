@@ -1,0 +1,237 @@
+/*
+ * Please see the included README.md file for license terms and conditions.
+ */
+
+/* Disable certain interactions on touch devices */
+/* SOURCE: https://github.com/ftlabs/fastclick/blob/master/examples/input.html */
+/* LICENSE: https://github.com/ftlabs/fastclick/blob/master/LICENSE */
+body {
+    -webkit-touch-callout: none ;
+    -webkit-text-size-adjust: none ; -ms-text-size-adjust: none ;
+    -webkit-user-select: none ; -moz-user-select: none ; -ms-user-select: none ; user-select: none ;
+    -webkit-highlight: none ;
+    -webkit-tap-highlight-color: rgba(0,0,0,0) ; 
+    -webkit-tap-highlight-color: transparent ;     /* For some Androids */
+}
+
+/* Recommended for Windows 8 Phone */
+/* SOURCE: http://www.excellentwebworld.com/common-problems-solution-for-windows-phone-8-phonegap */
+html {
+    -ms-touch-action: pan-x ;
+}
+
+/* Recommended for Windows 8 Phone */
+/* SOURCE: http://www.excellentwebworld.com/common-problems-solution-for-windows-phone-8-phonegap */
+body {
+    -ms-touch-action: pan-y ;
+    -ms-content-zooming: none ;
+}
+
+/* allow copy-paste */
+input, textarea  {
+    -webkit-user-select: text ; -moz-user-select: text ; -ms-user-select: text ; user-select: text ;
+}
+
+body {
+    /* margin: 0.5rem ; */
+    background: white ;
+    color: black ;
+}
+
+@mixin dimension($val, $vil){
+    width: $val;
+    height: $vil;
+}
+
+@mixin box-sizing($val){
+    box-sizing: $val;  
+    -moz-box-sizing: $val; /*Firefox 1-3*/  
+    -webkit-box-sizing: $val; /* Safari */  
+}
+
+@function substraction($some-number, $another-number){
+  @return $some-number + $another-number
+}
+
+@mixin transition ($val){
+    -webkit-transition: all ease-out $val;
+    -moz-transition: all ease-out $val;
+    -o-transition: all  ease-out $val;
+    transition: all ease-out $val;
+}
+
+@mixin border-radius($val){
+    -webkit-border-radius: $val;
+    -moz-border-radius: $val;
+    -o-border-radius: $val;
+    border-radius: $val;
+}
+
+$mp_white: #f7f7f7;
+$base: #232323;
+
+/********************************************************************************************************/
+/********************************************************************************************************/
+// Resetter
+/********************************************************************************************************/
+/********************************************************************************************************/
+.container-fluid {
+//padding-right: 0px !important;
+//padding-left: 0px !important;
+//margin-right: auto;
+//margin-left: auto;
+}
+
+
+/********************************************************************************************************/
+/********************************************************************************************************/
+// Demo
+/********************************************************************************************************/
+/********************************************************************************************************/
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+
+body {
+    background: #fff;//#34495e;
+    color: $base;
+    font-weight: 300;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+
+/********************************************************************************************************/
+/********************************************************************************************************/
+// Stylin' Mobile
+/********************************************************************************************************/
+/********************************************************************************************************/
+
+
+/****************************************************/
+// Base Foundation
+/****************************************************/
+
+.s_left_display{
+    position: fixed;
+    z-index: 9999;
+}  
+.s_sidebar_area {
+    width: 300px;
+    display: block;
+    float: left; 
+    overflow-y: scroll;
+    position: relative;
+}
+.s_sidebar_lv_1 {
+    width: 300px;
+    position: absolute;
+    right: 48px;
+    top: 0px;
+    overflow-y: scroll;
+
+}
+
+.s_sidebar_close_area {
+    display: block;
+    float: left;
+}
+
+.s_middle_display {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.s_middle_display_splash {
+    overflow: hidden;
+    position: relative;
+    
+    background: url('../img/sixty.svg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+
+
+
+
+}
+
+.s_tbl {
+    display: table;
+    height: inherit;
+    width: 100%;
+
+    .s_cell {
+        display: table-cell;
+        height: inherit;
+        width: 100%;
+        vertical-align: middle;
+    }
+}
+
+/****************************************************/
+// header
+/****************************************************/
+
+.frunk-header,
+.frunk-top {
+    //font-family: 'Lato', Arial, sans-serif;
+}
+
+.frunk-header {
+    margin: 0 auto;
+   // padding: 2em;
+   // background: rgba(0,0,0,0.3);
+   text-align: center;
+   height: 48px;
+   width: 100%;
+   overflow: hidden;
+   position: relative;
+   z-index: 99999;
+
+   .s_left_sec {
+        @include dimension(48px, 48px);
+        display: block;
+        float: left;
+        position: absolute;
+        left:0px;
+        top:0px;
+
+        z-index: 9;
+    }    
+
+    .s_mid_sec {
+        @include dimension(100%, 48px);
+        display: block;
+        float: left;
+        left:0px;
+        top:0px;
+
+        text-align: center;
+    }
+
+    .s_right_sec {
+        @include dimension(48px, 48px);
+        display: block;
+        float: right;
+        position: absolute;
+        right:0px;
+        top:0px;
+
+        z-index: 9;
+    }
+
+
+}
+
+/****************************************************/
+// body
+/****************************************************/
+
+
+
+
+/********************************************************************************************************/
+/********************************************************************************************************/
+// Stylin' Mobile - splash
+/********************************************************************************************************/
+/********************************************************************************************************/
