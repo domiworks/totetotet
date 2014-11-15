@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<meta charset="utf-8" />
+			<script src="js/jquery-1.11.1.min.js"></script>    
+	       <script src="js/jquery-migrate-1.2.1.min.js"></script> 
+						
+	</head>
+	<body>
+		<input type="button" value="click me" id="butt"/>
+		<p id='result'></p>
+		<script>
+			$('body').on('click', '#butt', function()
+			{				
+				$.ajax({					
+					type : 'GET',					
+					url : 'http://partners.api.skyscanner.net/apiservices/reference/v1.0/countries/id-ID?apiKey=ah395258861593902161819075536914',
+					dataType: 'json',					
+					success : function(response)
+					{
+						$('#result').html(response);					
+					},
+					error : function(jqXHR, textStatus, errorThrown)
+					{
+						alert(jqXHR.responseText + " c " + jqXHR.readyState + " " + errorThrown);
+					}
+				},'json');
+			});
+		</script>
+	</body>
+
+</html>
