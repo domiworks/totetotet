@@ -1,4 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 /*
  * Please see the included README.md file for license terms and conditions.
  */
@@ -63,8 +62,6 @@ body {
 body {
   background: #fff;
   color: #232323;
-  font-weight: 300;
-  font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
 /********************************************************************************************************/
@@ -105,7 +102,6 @@ body {
 
 /* line 138, E:/xampp/htdocs/suajkt/wundercase/www/css/app.scss */
 .s_middle_display {
-  overflow-y: scroll;
   overflow-x: hidden;
 }
 
@@ -137,7 +133,7 @@ body {
 /****************************************************/
 /****************************************************/
 /* line 180, E:/xampp/htdocs/suajkt/wundercase/www/css/app.scss */
-.frunk-header {
+.wc-header {
   margin: 0 auto;
   text-align: center;
   height: 48px;
@@ -147,7 +143,7 @@ body {
   z-index: 99999;
 }
 /* line 191, E:/xampp/htdocs/suajkt/wundercase/www/css/app.scss */
-.frunk-header .s_left_sec {
+.wc-header .s_left_sec {
   width: 48px;
   height: 48px;
   display: block;
@@ -158,7 +154,7 @@ body {
   z-index: 9;
 }
 /* line 202, E:/xampp/htdocs/suajkt/wundercase/www/css/app.scss */
-.frunk-header .s_mid_sec {
+.wc-header .s_mid_sec {
   width: 100%;
   height: 48px;
   display: block;
@@ -168,7 +164,7 @@ body {
   text-align: center;
 }
 /* line 212, E:/xampp/htdocs/suajkt/wundercase/www/css/app.scss */
-.frunk-header .s_right_sec {
+.wc-header .s_right_sec {
   width: 48px;
   height: 48px;
   display: block;

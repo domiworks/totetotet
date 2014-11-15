@@ -88,14 +88,14 @@ $base: #232323;
 // Demo
 /********************************************************************************************************/
 /********************************************************************************************************/
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+//@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 
 body {
     background: #fff;//#34495e;
     color: $base;
-    font-weight: 300;
-    font-family: 'Lato', Calibri, Arial, sans-serif;
+  //  font-weight: 300;
+   // font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
 
@@ -136,7 +136,7 @@ body {
 }
 
 .s_middle_display {
-    overflow-y: scroll;
+  //  overflow-y: scroll;
     overflow-x: hidden;
 }
 .s_middle_display_splash {
@@ -172,12 +172,12 @@ body {
 // header
 /****************************************************/
 
-.frunk-header,
-.frunk-top {
+.wc-header,
+.wc-top {
     //font-family: 'Lato', Arial, sans-serif;
 }
 
-.frunk-header {
+.wc-header {
     margin: 0 auto;
    // padding: 2em;
    // background: rgba(0,0,0,0.3);
