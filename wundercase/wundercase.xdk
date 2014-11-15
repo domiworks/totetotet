@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "appDesigner",
       "projectGuid": "c7f57448-9d20-4c04-bc89-1e83087f84fd",
-      "lastModifiedDate": 1416037510518,
+      "lastModifiedDate": 1416074982938,
       "creationDate": 1416037510349
     },
     "XDK-app-designer": "true",
@@ -63,7 +63,15 @@
         "appID_": "xdk.intel.ad.project",
         "appAccess_": "*",
         "icons_": [],
-        "splashes_": [],
+        "splashes_": [
+          {
+            "relPath": "img/splash.jpg",
+            "density": "ldpi",
+            "height": 426,
+            "width": 320,
+            "orientation": "portrait"
+          }
+        ],
         "iosProvs_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
