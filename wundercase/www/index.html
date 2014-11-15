@@ -214,5 +214,94 @@
 		<!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
 		<!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
 		<!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+        <div id="namaHotel">asd</div>
+        <button class="procBut1">Here</button>
 	</body>
+    <script>
+        $('body').on('click','.procBut1',function(){
+	
+            $.ajax({
+                dataType: 'json',
+                type: 'GET',
+                url:        'http://partners.api.skyscanner.net/apiservices/hotels/liveprices/v2/ID/IDR/id-ID/27539774/2014-12-04/2014-12-10/2/1?apiKey=ah395258861593902161819075536914',
+
+                success: function(response){
+                    alert('in');
+                    //$('#namaHotel').text(response['hotels'][0]['name']);
+                    var obj = response['hotels'];
+                    //alert(obj);
+                    var tes = "";
+                    var idx = 0;
+                    //alert('end 2');
+                    var img = convertToText(response['hotels'][0]['images']);
+                    var arr = img.split(":");
+                   // alert(arr[0]);
+                   // alert(arr[1]);
+                    tes = "<img src='http://d1bko2jzh7ix12.cloudfront.net"+arr[0].substring(1,arr[0].length)+arr[1].trim().substring(1,arr[0].length)+"' />";
+                    //alert(arr[0].substring(1,arr[0].length));
+                    //alert(arr[1].substring(1,arr[0].length));
+                    
+                    //alert(tes);
+                    //alert(response['hotels'][0]['images']);
+                    $(obj).each(function(){
+                        //alert('1');
+                        tes = tes+"nama hotel : "+obj[idx].name+"<br />";
+                        
+                        //tes = tes + "gambar : "+obj[idx]['images'][0]+"<br />";
+                        //alert(tes);
+                        //alert('2');
+                        //alert(idx);
+                        idx++;
+                    });
+                    //alert(idx);
+                      // alert(tes);               
+                   //alert(response['hotels'][0]['name']);
+                    $('#namaHotel').html(tes);
+                    return true;
+                },error: function(xhr, textStatus, errorThrown){
+                    alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status);
+                    alert("responseText: "+xhr.responseText);
+                    alert(errorThrown);
+                }
+            },'json');
+
+        });
+        
+        function convertToText(obj) {
+    //create an array that will later be joined into a string.
+    var string = [];
+
+    //is object
+    //    Both arrays and objects seem to return "object"
+    //    when typeof(obj) is applied to them. So instead
+    //    I am checking to see if they have the property
+    //    join, which normal objects don't have but
+    //    arrays do.
+    if (typeof(obj) == "object" && (obj.join == undefined)) {
+        string.push("{");
+        for (prop in obj) {
+            string.push(prop, ": ", convertToText(obj[prop]), ",");
+        };
+        string.push("}");
+
+    //is array
+    } else if (typeof(obj) == "object" && !(obj.join == undefined)) {
+        string.push("[")
+        for(prop in obj) {
+            string.push(convertToText(obj[prop]), ",");
+        }
+        string.push("]")
+
+    //is function
+    } else if (typeof(obj) == "function") {
+        string.push(obj.toString())
+
+    //all other values can be done with JSON.stringify
+    } else {
+        string.push(JSON.stringify(obj))
+    }
+
+    return string.join("")
+}
+    </script>
 	</html>
