@@ -199,23 +199,6 @@
 
 		<script>
 
-		$('.f_elast').css('height','33vh')
-		//new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
-
-		$('body').on('click', '.f_elast', function(){
-			$(this).animate({
-				height: "70vh"
-			}, 370, function() {
-
-			});
-			//$(this).css('height','70vh');
-			$(this).siblings('.f_elast').animate({
-				height: "15vh"
-			}, 370, function() {
-
-			});
-			//$(this).siblings('.f_elast').css('height','15vh');
-		});
 
 	      //Enable swiping...
 	      
@@ -252,5 +235,7 @@
 		<!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
 		<!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
 		<!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+		
+	<script src="js/hyper_x.js"></script> 
 	</body>
 	</html>
