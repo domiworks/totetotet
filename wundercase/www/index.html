@@ -199,9 +199,35 @@
 		</section>
 
 		<script>
+			var height10 = $(window).height() + 'px';
+			var height03 = ($(window).height()*0.3)+'px';
+			var height07 = ($(window).height()*0.7)+'px';
+			var height015 = ($(window).height()*0.15)+'px';
+
+			
 			$(document).ready(function(){
-				$('.f_elast').height('100px')
+				$('.f_elast').height(height03)
 			});
+	 
+			
+			//new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
+
+			$('body').on('click', '.f_elast', function(){
+				$(this).animate({
+					height: height07
+				}, 370, function() {
+
+				});
+				//$(this).css('height','70vh');
+				$(this).siblings('.f_elast').animate({
+					height: height015
+				}, 370, function() {
+
+				});
+				//$(this).siblings('.f_elast').css('height','15vh');
+			});
+
+
 
 	      //Enable swiping...
 	      
