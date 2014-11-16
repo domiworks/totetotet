@@ -141,7 +141,7 @@
 		<section class="s_middle_display" style="">
 			<div class="container-fluid" style="">
 				<div class="row f_elast one" style="border-top: 1px solid #787878; position: relative; overflow-y: scroll; overflow-x: hidden;">
-                    <div class="f_faker"></div>
+                    <div class="f_faker">Most Viewed</div>
                     <div class="col-lg-12">
 						<div class="f_suggest_node form-horizontal ">
                               <div class="form-group">
@@ -184,7 +184,7 @@
 					</div>
 				</div>
 				<div class="row f_elast two" style="border-top: 1px solid #787878; position: relative; overflow-y: scroll; overflow-x: hidden;">
-					<div class="f_faker"></div>
+					<div class="f_faker">Most Rated</div>
                     <div class="col-lg-12">
 						<div class="f_suggest_node form-horizontal">
                               <div class="form-group">
@@ -223,7 +223,7 @@
 					</div>
 				</div>
 				<div class="row f_elast three" style="border-top: 1px solid #787878; position: relative; overflow-y: scroll; overflow-x: hidden;">
-					<div class="f_faker"></div>
+					<div class="f_faker">Best Price</div>
                     <div class="col-lg-12">
 
 						<div class="f_suggest_node form-horizontal">
@@ -269,6 +269,12 @@
         .unremoved{
             overflow: hidden;
         }
+        
+        .f_faker {
+            font-family: got_book;
+            font-size: 2em;
+            text-transform: uppercase;
+        }
     </style>
 		<script>
             var width = window.innerWidth;
@@ -282,8 +288,8 @@
                 $('.f_elast').height(height03);
                 
                 $('.f_elast').addClass('unremoved');
-                $('.f_faker').height(height03).width(width).css('display','block').css('z-index','999').css('background-color','#213232').css('position','absolute').css('top','0px').css('left','0px');
-            
+                $('.f_faker').height(height03).width(width).css('display','block').css('z-index','999').css('background-color','#ffffff').css('position','absolute').css('top','0px').css('left','0px');
+                
             });	
 
 			$('body').on('click', '.f_elast', function(){
@@ -297,7 +303,10 @@
                 $(this).siblings('.f_elast').children('.f_faker').css('display','block');
                 
                 $(this).children('.f_faker').css('display','none');
-
+                
+                $(this).siblings('.f_elast').find('.f_suggest_node').css('display','none');
+                $(this).find('.f_suggest_node').css('display','block');
+                
 				$(this).siblings('.f_elast').animate({
 					height: height01
 				}, 370, function() {
