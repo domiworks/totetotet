@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "appDesigner",
       "projectGuid": "c7f57448-9d20-4c04-bc89-1e83087f84fd",
-      "lastModifiedDate": 1416074982938,
+      "lastModifiedDate": 1416109680902,
       "creationDate": 1416037510349
     },
     "XDK-app-designer": "true",
@@ -62,12 +62,19 @@
         "appName_": "wundercase",
         "appID_": "xdk.intel.ad.project",
         "appAccess_": "*",
-        "icons_": [],
+        "icons_": [
+          {
+            "relPath": "img/app.png",
+            "density": "ldpi",
+            "height": 36,
+            "width": 36
+          }
+        ],
         "splashes_": [
           {
             "relPath": "img/splash.jpg",
-            "density": "ldpi",
-            "height": 426,
+            "density": "mdpi",
+            "height": 470,
             "width": 320,
             "orientation": "portrait"
           }
@@ -95,8 +102,23 @@
         "appName_": "wundercase",
         "appID_": "xdk.intel.ad.project",
         "appAccess_": "*",
-        "icons_": [],
-        "splashes_": [],
+        "icons_": [
+          {
+            "relPath": "img/app.png",
+            "density": "hdpi",
+            "height": 72,
+            "width": 72
+          }
+        ],
+        "splashes_": [
+          {
+            "relPath": "img/splash.jpg",
+            "density": "hdpi",
+            "height": 640,
+            "width": 480,
+            "orientation": "portrait"
+          }
+        ],
         "iosProvs_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
