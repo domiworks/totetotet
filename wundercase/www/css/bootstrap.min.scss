@@ -2354,6 +2354,9 @@ output {
   width: 100%;
   height: 34px;
   padding: 6px 12px;
+
+  padding-top: 7px;
+  padding-bottom: 7px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
@@ -2700,14 +2703,14 @@ select[multiple].input-lg {
   margin-right: -15px;
   margin-left: -15px;
 }
-/*
-@media (min-width: 768px) {
+
+
   .form-horizontal .control-label {
     padding-top: 7px;
     margin-bottom: 0;
     text-align: right;
   }
-}*/
+/*
 .form-horizontal .has-feedback .form-control-feedback {
   top: 0;
   right: 15px;
