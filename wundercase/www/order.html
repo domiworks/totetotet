@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="js/datetimepicker/jquery.datetimepicker.css" rel="stylesheet">
+	</head>
+	<body>
+        
+          
+        <script src="js/jquery-1.11.1.min.js"></script>    
+        <script src="js/jquery-migrate-1.2.1.min.js"></script>  
+				
+		<script src="js/bootstrap.min.js"></script>		
+		<script src="js/datetimepicker/jquery.datetimepicker.js"></script>
+		
+		
+		<!-- start content -->
+		
+			<div>
+				<form class="form-horizontal" role="form">
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-sm-8"><!-- col-sm-5 -->
+							
+								<!-- pilihan backpacker or something-->
+								  <div class="form-group">
+									<label class="col-sm-2">You Are</label>									
+									<label for="input_youare" class="col-sm-0">:</label>									
+									<select class="col-sm-0" id="input_youare" type="text" class="form-control" value="">
+										<option>torototot</option>
+										<option>torototot</option>
+										<option>torototot</option>
+										<option>torototot</option>
+										<option>torototot</option>
+									</select>									
+								  </div>
+								  
+								  <div class="form-group">
+									<label class="col-sm-2">Origin</label>
+									<label for="input_origin" class="col-sm-0">:</label>
+									<input class="col-sm-3" type="text" class="form-control" id="input_origin" placeholder="origin" />
+								  </div>
+								  
+								  <div class="form-group">
+									<label class="col-sm-2">Outbound Date</label>
+									<label for="input_outbounddate" class="col-sm-0">:</label>
+									<input class="col-sm-0" type="text" id="input_outbounddate" placeholder="date" />
+                                      <script>
+                                          jQuery('#input_outbounddate').datetimepicker({
+					lang:'en',
+					i18n:{
+						en:{
+							months:[
+							'January','February','March','April',
+							'May','June','July','August',
+							'September','October','November','December',
+							],
+							dayOfWeek:[
+							"Sun.", "Mon.", "Tue.", "Wed.", 
+							"Thu.", "Fri.", "Sat.",
+							]
+							
+						}
+						},
+					timepicker:false,
+					format:'Y-m-d',
+					yearStart: '1900'
+				});	
+                                      </script>
+								  </div>
+								  
+								  <div class="form-group">
+									<label class="col-sm-2">Destination</label>
+									<label for="input_destination" class="col-sm-0">:</label>
+									<input class="col-sm-3" type="text" id="input_destination" placeholder="destination" />									
+								  </div>
+								  
+								   <div class="form-group">
+									<label class="col-sm-2">Inbound Date</label>
+									<label for="input_inbounddate" class="col-sm-0">:</label>
+									<input class="col-sm-0" type="text" id="input_inbounddate" placeholder="date" />				
+                                       <script>
+                                            jQuery('#input_inbounddate').datetimepicker({
+					lang:'en',
+					i18n:{
+						en:{
+							months:[
+							'January','February','March','April',
+							'May','June','July','August',
+							'September','October','November','December',
+							],
+							dayOfWeek:[
+							"Sun.", "Mon.", "Tue.", "Wed.", 
+							"Thu.", "Fri.", "Sat.",
+							]
+							
+						}
+						},
+					timepicker:false,
+					format:'Y-m-d',
+					yearStart: '1900'
+				});	
+                                       </script>
+								  </div>								  								 
+								  
+								  <div class="form-group">
+									<label class="col-sm-2">Person</label>									
+									<label for="input_persons" class="col-sm-0">:</label>
+									<select class="col-sm-0" id="input_persons" type="text" class="form-control" value="">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+										<option>6</option>
+										<option>7</option>
+										<option>8</option>
+									</select>									
+								  </div>
+								  
+								  <div class="form-group">
+									 <label class="col-sm-2">Suggestions</label>									
+									 <label for="input_suggestions" class="col-sm-0">:</label>
+									 <input type="checkbox" id="input_suggestions" /> 								
+								  </div>
+								  
+								  <div class="form-group">	
+									  <div class="col-sm-3"></div>
+									  <button id="buttonSearch" class="col-sm-1" type="submit" class="btn btn-default">Search</button>
+								  </div>
+								  
+								  
+							</div>
+						</div>	
+					</div>	
+				</form>
+			</div>
+			
+            <div id="div_result">
+            </div>
+        
+            <script>                                
+                $('body').on('click', '#buttonSearch', function(){
+                    //alert("wew");
+                    
+                   $origin = $('#input_origin').val();
+                        alert($origin);
+                    $outbounddate = $('#input_outbounddate').val();
+                        alert($outbounddate);
+                    $destination = $('#input_destination').val();
+                        alert($destination);
+                    $inbounddate = $('#input_inbounddate').val();
+                        alert($inbounddate);
+                    $persons = $('#input_persons').val(); 
+                    
+                    if($outbounddate == "" || $origin == "")
+                    {
+                        alert("origin and outbounddate is required");
+                    }
+                    else
+                    {   
+                        if($inbounddate == ""){
+                            $inbounddate = "anytime";
+                        }
+                        if($destination == ""){
+                            $destination = "anywhere";
+                        }
+                        //start ajax
+                        $.ajax({					
+					type : 'GET',					
+					url : 'http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/ID/IDR/id-ID/EDI/LHR/2014-11-20/2014-11-24?apiKey=ah395258861593902161819075536914',
+					dataType: 'json',					
+					success : function(response)
+					{
+                        
+					   $('#result').html(JSON.stringify(response));					
+                        //$('#result').html(response['Places'][0]['PlaceId']);
+                        //alert(response);
+					},
+					error : function(jqXHR, textStatus, errorThrown)
+					{
+						alert(jqXHR.responseText + " c " + jqXHR.readyState + " " + errorThrown);
+					}
+				},'json');
+                        /*
+                        $.ajax({
+                            type: 'GET',
+                            dataType: 'json',
+                            url : 'http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/ID/IDR/id-ID/'+$origin+'/'+$destination+'/'+$outbounddate+'/'+$inbounddate+'?apiKey=ah395258861593902161819075536914',
+                            success: function(response){
+                                $('#div_result').html(JSON.stringify(response));
+                                alert("success");
+                            },
+                            error : function(jqXHR, textStatus, errorThrown){
+                                alert(jqXHR.responseText + " c " + jqXHR.readyState + " " + errorThrown);
+                            }
+                        },'json');*/
+                    }
+                    
+                });
+            </script>
+		<!-- end start content-->
+	</body>
+</html>
