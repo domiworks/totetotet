@@ -22,7 +22,15 @@
 	<script src="js/jquery-migrate-1.2.1.min.js"></script> 
     
 	<script src="js/bootstrap.min.js"></script>
-        <script>
+        
+	</head>
+	<body style="background: url('img/login.png') no-repeat; background-size: 360px 640px;">
+		
+		<script src="www/js/jquery-1.11.1.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>		
+		<script src="www/js/datetimepicker/jquery.datetimepicker.js"></script>
+		
+		<script>
             (function($){
 $.oauth2 = function (options, successCallback, errorCallback) {
 // checks if all the required oauth2 params are defined
@@ -127,14 +135,6 @@ errorCallback(error, url.split("#")[1]);
 };
 }(jQuery));
 </script>
-	</head>
-	<body style="background: url('img/login.png') no-repeat; background-size: 360px 640px;">
-		
-		<script src="www/js/jquery-1.11.1.min.js"></script>
-		<script src="bootstrap/js/bootstrap.min.js"></script>		
-		<script src="www/js/datetimepicker/jquery.datetimepicker.js"></script>
-		
-		
 		<!-- start content -->
 		
 			<div class="container-fluid">
@@ -180,6 +180,8 @@ errorCallback(error, url.split("#")[1]);
 								</div>
 							</div>
                             <script>
+                                 $('body').on('click', '#...', function()
+    {
                                 $.oauth2({
              auth_url: 'https://oauth.mig.me/oauth/auth', // required
              response_type: 'code', // required
@@ -215,6 +217,7 @@ errorCallback(error, url.split("#")[1]);
                 alert(error);
              // do something with error
              });
+                                 });
                             </script>
 							
 						</div>						

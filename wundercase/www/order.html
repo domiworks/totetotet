@@ -150,18 +150,18 @@
                     //alert("wew");
                     
                    $origin = $('#input_origin').val();
-                        alert($origin);
+                        //alert($origin);
                     $outbounddate = $('#input_outbounddate').val();
-                        alert($outbounddate);
+                       // alert($outbounddate);
                     $destination = $('#input_destination').val();
-                        alert($destination);
+                       // alert($destination);
                     $inbounddate = $('#input_inbounddate').val();
-                        alert($inbounddate);
+                       // alert($inbounddate);
                     $persons = $('#input_persons').val(); 
                     
                     if($outbounddate == "" || $origin == "")
                     {
-                        alert("origin and outbounddate is required");
+                        //alert("origin and outbounddate is required");
                     }
                     else
                     {   
@@ -185,7 +185,7 @@
 					},
 					error : function(jqXHR, textStatus, errorThrown)
 					{
-						alert(jqXHR.responseText + " c " + jqXHR.readyState + " " + errorThrown);
+						//alert(jqXHR.responseText + " c " + jqXHR.readyState + " " + errorThrown);
 					}
 				},'json');
                         /*
