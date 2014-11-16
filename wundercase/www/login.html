@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="www/js/datetimepicker/jquery.datetimepicker.css" rel="stylesheet">
+        
+        <link rel="stylesheet" href="css/all.css">
+
+	<!-- Most third-party libraries should go here. References (below) are just examples to give you the general idea... -->
+	<!-- <script src="lib/mc/hammer.js"></script> -->
+	<!-- <script src="lib/ft/fastclick.js"></script> -->
+
+	<script src="intelxdk.js"></script>         <!-- phantom library, needed for XDK "legacy" container api calls -->
+	<script src="cordova.js"></script>          <!-- phantom library, needed for Cordova api calls -->
+	<script src="xhr.js"></script>              <!-- phantom library, needed for XDK "legacy" container CORS -->
+
+	<script src="js/app.js"></script>           <!-- for your event code, see README and file comments for details -->
+	<script src="js/init-app.js"></script>      <!-- for your init code, see README and file comments for details -->
+	<script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see file for details -->
+
+	<script src="js/jquery.easing.min.js"></script>     
+	<script src="js/jquery-1.11.1.min.js"></script>    
+	<script src="js/jquery-migrate-1.2.1.min.js"></script> 
+    
+	<script src="js/bootstrap.min.js"></script> 
 	</head>
-	<body>
+	<body style="background: url('img/login.png') no-repeat; background-size: 360px 640px;">
 		
 		<script src="www/js/jquery-1.11.1.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>		
@@ -13,19 +32,18 @@
 		
 		<!-- start content -->
 		
-			<div>
+			<div class="container-fluid">
 				<form class="form-horizontal" role="form">
-					<div class="modal-body">						
+					<div class="row">						
 																	
-						<div class="col-sm-8" style="background-color: #00ffff;">
+						<div class="col-sm-12" style="">
 						
 							<!-- gap -->
 							<div class="row" style="display:inline-block;">
 							</div>														
 							
 							<div class="row">
-								<div align="center">
-									<img src="" alt="no photo" width="300" height="200"/>
+								<div align="center" style="width: 100%; height: 300px; display: block;">
 								</div>
 							</div>
 					
@@ -35,7 +53,7 @@
 							
 							<div class="row">								
 								<div align="center">
-									<button id="..." align="center">Login with Facebook</button>								
+									<button id="..." align="center" class="btn btn-info">Login with Facebook</button>								
 								</div>
 							</div>							 										
 							
@@ -53,7 +71,7 @@
 
 							<div class="row">								
 								<div align="center">								
-									<button id="..." >Login with Migme</button>								
+									<button id="..." class="btn btn-warning" ><a href="order.html" >Login with Migme</a></button>								
 								</div>
 							</div>
 							
