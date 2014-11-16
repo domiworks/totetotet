@@ -468,14 +468,14 @@
                     tess5 = tess5 + "http://d1bko2jzh7ix12.cloudfront.net"+arr5[0].substring(1,arr5[0].length)+arr5[1].trim().substring(1,arr5[1].length);
                     tes5 = tes5+"nama hotel : "+obj[idtemp1].name+"<br />";
                     tes5 = tes5+"harga : "+ toRp(obj2[idtemp1].agent_prices[0].price_total);+"<br />";
-                    tes5 = tes5+"<input type='hidden' value='"+id1+"' >";
-                    tes5 = tes5 + "<button class='but'>Pick</button>";
+                    tes5 = tes5+"<input type='hidden' value='"+id1+"' > <br />";
+                    tes5 = tes5 + "<a href='result.html?id="+id1+"&url="+response['urls'].hotel_details+"' class='but'>Pick</a>";
                     
                     tess6 = tess6 + "http://d1bko2jzh7ix12.cloudfront.net"+arr6[0].substring(1,arr6[0].length)+arr6[1].trim().substring(1,arr6[1].length);
                     tes6 = tes6+"nama hotel : "+obj[idtemp2].name+"<br />";
                     tes6 = tes6+"harga : "+ toRp(obj2[idtemp2].agent_prices[0].price_total);+"<br />";
-                     tes6 = tes6+"<input type='hidden' value='"+id2+"' >";
-                    tes6 = tes6 + "<a href='result.html?id=1' class='but'>Pick</a>";
+                     tes6 = tes6+"<input type='hidden' value='"+id2+"' > <br />";
+                    tes6 = tes6 + "<a href='result.html?id="+id2+"&url="+response['urls'].hotel_details+"' class='but'>Pick</a>";
                     
                     $('#oneone').html(tes);
                     $('#onetwo').html(tes2);
@@ -494,6 +494,7 @@
                     
                     $('#threeonepic').attr("src",tess5);
                     $('#threetwopic').attr("src",tess6);
+                    
                     return true;
                 },error: function(xhr, textStatus, errorThrown){
                     alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status);

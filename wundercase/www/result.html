@@ -9,7 +9,7 @@
     <title>Result </title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
   </head>
 
@@ -78,8 +78,51 @@
       </h4>
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      <div class="panel-body hotel">
+        <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne">
+          Detail
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body detailHotel">
+            
+        </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo">
+          Amenities
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body amenitiesHotel">
+        
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2" aria-expanded="false" aria-controls="collapseThree">
+         Comments
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="panel-body commentshotel">
+        
+        </div>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   </div>
@@ -92,9 +135,13 @@
       </h4>
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
+        <div class="panel-body">
+           <ul>
+            <li>Big Match Chelsea vs Arsenal @ The Ritz-Carlton Jakarta, Mega Kuningan 20.00 PM</li>
+               <li>Art Exhibition by Barly @ Museum Seni Barly</li>
+               <li>Gigantic Club Party @ Alexis Hotel Jakarta</li>
+            </ul> 
+        </div>
     </div>
   </div>
 </div>
@@ -120,8 +167,121 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+      <script>$('#accordion2').collapse({
+  toggle: false
+});</script></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script>
     
+        function getParameterByName(name) 
+        {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        
+        $(document).ready(function(){
+        
+            var a = getParameterByName('id');
+           // alert(a);
+            var b = getParameterByName('url');
+           // alert(b);
+            
+            $.ajax({
+                dataType: 'json',
+                type: 'GET',
+                url: 'http://partners.api.skyscanner.net'+b+'&hotelIds='+a,
+
+                success: function(response){
+                    var det = "";
+                    var img = convertToText(response['hotels'][0]['images']);
+                    var arr = img.split(":");
+                    det = det + "<img src='http://d1bko2jzh7ix12.cloudfront.net"+arr[0].substring(1,arr[0].length)+arr[1].trim().substring(1,arr[1].length)+"' > <br>";
+                    det = det + response['hotels'][0].name+"<br>";
+                    det = det + "Price per night "+ toRp(response['hotels_prices'][0].agent_prices[0].price_per_room_night)+"<br>";
+                    det = det + "Total "+ toRp(response['hotels_prices'][0].agent_prices[0].price_total)+"<br>";
+                    //det = det + response['hotels_prices']['room_offers'][0]['rooms'].name+"<br>";
+                     det = det + response['hotels'][0].description+"<br>";
+                    $('.detailHotel').html(det);
+                    var ame = "";
+                    ame = ame + "- "+ response['amenities'][9].name + "<br>";
+                    ame = ame + "- "+response['amenities'][11].name + "<br>";
+                    ame = ame + "- "+response['amenities'][7].name + "<br>";
+                    ame = ame + "- "+response['amenities'][5].name + "<br>";
+                    ame = ame + "- "+response['amenities'][24].name + "<br>";
+                    $('.amenitiesHotel').html(ame);
+                    var com = "";
+                    com = com + response['hotels_prices'][0]['ratings'][0].name + " - "+response['hotels_prices'][0]['ratings'][0].score+"<br>"+  response['hotels_prices'][0]['ratings'][0].examples+"<br>";
+                    com = com + response['hotels_prices'][0]['ratings'][1].name + " - "+response['hotels_prices'][0]['ratings'][1].score+"<br>"+  response['hotels_prices'][0]['ratings'][1].examples+"<br>";
+                    com = com + response['hotels_prices'][0]['ratings'][2].name + " - "+response['hotels_prices'][0]['ratings'][2].score+"<br>"+  response['hotels_prices'][0]['ratings'][2].examples+"<br>";
+                    com = com + response['hotels_prices'][0]['ratings'][3].name + " - "+response['hotels_prices'][0]['ratings'][3].score+"<br>"+  response['hotels_prices'][0]['ratings'][3].examples+"<br>";
+                    com = com + response['hotels_prices'][0]['ratings'][4].name + " - "+response['hotels_prices'][0]['ratings'][4].score+"<br>"+  response['hotels_prices'][0]['ratings'][4].examples+"<br>";
+                    com = com + response['hotels_prices'][0]['ratings'][5].name + " - "+response['hotels_prices'][0]['ratings'][5].score+"<br>"+  response['hotels_prices'][0]['ratings'][5].examples+"<br>";
+                    $('.commentshotel').html(com); 
+                return true;
+                },error: function(xhr, textStatus, errorThrown){
+                    alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status);
+                    alert("responseText: "+xhr.responseText);
+                    alert(errorThrown);
+                }
+            },'json');
+        });
+        function toRp(angka){
+                var rev     = parseInt(angka, 10).toString().split('').reverse().join('');
+                var rev2    = '';
+                for(var i = 0; i < rev.length; i++){
+                    rev2  += rev[i];
+                    if((i + 1) % 3 === 0 && i !== (rev.length - 1)){
+                        rev2 += '.';
+                    }
+                }
+                return 'Rp ' + rev2.split('').reverse().join('')+',-';
+                //return 'IDR ' + rev2.split('').reverse().join('') + ',00';
+        }
+        
+        function convertToText(obj) 
+        {
+            //create an array that will later be joined into a string.
+            var string = [];
+
+            //is object
+            //    Both arrays and objects seem to return "object"
+            //    when typeof(obj) is applied to them. So instead
+            //    I am checking to see if they have the property
+            //    join, which normal objects don't have but
+            //    arrays do.
+            if (typeof(obj) == "object" && (obj.join == undefined)) 
+            {
+                string.push("{");
+                for (prop in obj) {
+                    string.push(prop, ": ", convertToText(obj[prop]), ",");
+                };
+                string.push("}");
+
+            //is array
+            } else if (typeof(obj) == "object" && !(obj.join == undefined)) 
+            {
+                string.push("[")
+                for(prop in obj) {
+                    string.push(convertToText(obj[prop]), ",");
+                }
+                string.push("]")
+
+            //is function
+            } else if (typeof(obj) == "function") 
+            {
+                string.push(obj.toString())
+
+            //all other values can be done with JSON.stringify
+            } else 
+            {
+                string.push(JSON.stringify(obj))
+            }
+
+            return string.join("")
+        }
+    </script>
 
 </body></html>
