@@ -6,7 +6,7 @@
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
 
-        <title>Choose with Suggestion</title>
+        <title>Paypal Information</title>
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -59,38 +59,44 @@
     <input type="hidden" name="action" value="process" />
     <input type="hidden" name="cmd" value="_cart" /> <?php // use _cart for cart checkout ?>
     <input type="hidden" name="currency_code" value="IDR" />
-    <input type="hidden" name="invoice" value="Random ID" />
-	<input type="hidden" name="total" value="5000000" />
-	<input type="hidden" name="details" value="GD-25:1000000;Hotel-X:3000000;QZ-123:1000000;" />
+    <input type="hidden" name="invoice" value="<?php echo date("His").rand(1234, 9632); ?>" /><!--random code--> 
+	<input type="hidden" name="product_name" value="Flight Package - " /><!--Judul Flight JKT-KL-JKT; Hotel M KL--> 
+	<input type="hidden" name="product_id" value="1n1n1n1" /><!--random code--> 
+	<input type="hidden" name="product_quantity" value="1" />
+	<input type="hidden" name="product_amount" value="500" /><!--harga total--> 
+	<input type="hidden" name="details" value="GD-25:1000000;Hotel-X:3000000;QZ-123:1000000;" /><!--detailing--> 
                     <div class="input-group">
   <span class="input-group-addon">First Name</span>
-  <input type="text" class="form-control" placeholder="First Name">
+  <input type="text" class="form-control" name="payer_fname" placeholder="First Name">
 </div>
 <div class="input-group">
   <span class="input-group-addon">Last Name</span>
-  <input type="text" class="form-control" placeholder="Last Name">
+  <input type="text" class="form-control" name="payer_lname" placeholder="Last Name">
 </div>
 <div class="input-group">
   <span class="input-group-addon">Address</span>
-  <input type="text" class="form-control" placeholder="Address">
+  <input type="text" class="form-control" name="payer_address" placeholder="Address">
 </div>
 <div class="input-group">
   <span class="input-group-addon">City</span>
-  <input type="text" class="form-control" placeholder="City">
+  <input type="text" class="form-control" name="payer_city" placeholder="City">
 </div>
 
 <div class="input-group">
   <span class="input-group-addon">Zip Code</span>
-  <input type="text" class="form-control" placeholder="Zip Code">
+  <input type="text" class="form-control" name="payer_zip" placeholder="Zip Code">
 </div>
 <div class="input-group">
   <span class="input-group-addon">Country</span>
-  <input type="text" class="form-control" placeholder="Country">
+  <input type="text" class="form-control" name="payer_country" placeholder="Country">
 </div>
-
+<div class="input-group">
+  <span class="input-group-addon">Phone</span>
+  <input type="text" class="form-control" name="payer_phone" placeholder="Phone">
+</div>
 <div class="input-group">
   <span class="input-group-addon">Email</span>
-  <input type="email" class="form-control" placeholder="Email">
+  <input type="email" class="form-control" name="payer_email" placeholder="Email">
 </div>
 <br>
 <input type="submit" class="btn btn-info" name="submit" value="Submit" />
