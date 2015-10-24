@@ -20,31 +20,34 @@
 				<form class="form-horizontal" role="form">
 					<div class="modal-body">
 						<div class="row">
-							<div class="col-sm-8"><!-- col-sm-5 -->
+							<div class="col-sm-12"><!-- col-sm-5 -->
 							
 								<!-- pilihan backpacker or something-->
 								  <div class="form-group">
-									<label class="col-sm-2">You Are</label>									
-									<label for="input_youare" class="col-sm-0">:</label>									
-									<select class="col-sm-0" id="input_youare" type="text" class="form-control" value="">
+									<label class="col-sm-3 control-label">You Are</label>	
+                                      <div class="col-sm-9">
+									<select class="form-control" id="input_youare" type="text" class="form-control" value="">
 										<option>torototot</option>
 										<option>torototot</option>
 										<option>torototot</option>
 										<option>torototot</option>
 										<option>torototot</option>
-									</select>									
+									</select>	
+                                      
+                                      </div>								
 								  </div>
 								  
 								  <div class="form-group">
-									<label class="col-sm-2">Origin</label>
-									<label for="input_origin" class="col-sm-0">:</label>
-									<input class="col-sm-3" type="text" class="form-control" id="input_origin" placeholder="origin" />
-								  </div>
+									<label class="col-sm-3 control-label">Origin</label>
+									<!--<label for="input_origin" class="col-sm-0">:</label>-->
+                                      <div class="col-sm-9">
+									<input class="form-control" type="text" class="form-control" id="input_origin" placeholder="origin" />
+								  </div>  </div>
 								  
 								  <div class="form-group">
-									<label class="col-sm-2">Outbound Date</label>
-									<label for="input_outbounddate" class="col-sm-0">:</label>
-									<input class="col-sm-0" type="text" id="input_outbounddate" placeholder="date" />
+									<label class="col-sm-3 control-label">Outbound Date</label>
+									<!--<label for="input_outbounddate" class="col-sm-0">:</label>--><div class="col-sm-9">
+									<input class="form-control" type="text" id="input_outbounddate" placeholder="date" />
                                       <script>
                                           jQuery('#input_outbounddate').datetimepicker({
 					lang:'en',
@@ -68,17 +71,20 @@
 				});	
                                       </script>
 								  </div>
-								  
+								   </div>
 								  <div class="form-group">
-									<label class="col-sm-2">Destination</label>
-									<label for="input_destination" class="col-sm-0">:</label>
-									<input class="col-sm-3" type="text" id="input_destination" placeholder="destination" />									
+									<label class="col-sm-3 control-label">Destination</label>
+									<!--<label for="input_destination" class="col-sm-0">:</label>-->
+                                       <div class="col-sm-9">
+									<input class="form-control" type="text" id="input_destination" placeholder="destination" />																	  </div>
+
 								  </div>
 								  
 								   <div class="form-group">
-									<label class="col-sm-2">Inbound Date</label>
-									<label for="input_inbounddate" class="col-sm-0">:</label>
-									<input class="col-sm-0" type="text" id="input_inbounddate" placeholder="date" />				
+									<label class="col-sm-3 control-label">Inbound Date</label>
+									<!--<label for="input_inbounddate" class="col-sm-0">:</label>-->
+                                         <div class="col-sm-9">
+									<input class="form-control" type="text" id="input_inbounddate" placeholder="date" />				
                                        <script>
                                             jQuery('#input_inbounddate').datetimepicker({
 					lang:'en',
@@ -101,12 +107,12 @@
 					yearStart: '1900'
 				});	
                                        </script>
-								  </div>								  								 
+								  </div>	 </div>								  								 
 								  
 								  <div class="form-group">
-									<label class="col-sm-2">Person</label>									
-									<label for="input_persons" class="col-sm-0">:</label>
-									<select class="col-sm-0" id="input_persons" type="text" class="form-control" value="">
+									<label class="col-sm-3">Person</label>									
+									<!--<label for="input_persons" class="col-sm-0">:</label>--> <div class="col-sm-9">
+									<select class="form-control" id="input_persons" type="text" class="form-control" value="">
 										<option>1</option>
 										<option>2</option>
 										<option>3</option>
@@ -116,17 +122,17 @@
 										<option>7</option>
 										<option>8</option>
 									</select>									
-								  </div>
+								  </div></div>
 								  
 								  <div class="form-group">
-									 <label class="col-sm-2">Suggestions</label>									
-									 <label for="input_suggestions" class="col-sm-0">:</label>
+									 <label class="col-sm-3">Suggestions</label>									
+									<!-- <label for="input_suggestions" class="col-sm-0">:</label>--> <div class="col-sm-9">
 									 <input type="checkbox" id="input_suggestions" /> 								
-								  </div>
+								  </div> </div>
 								  
 								  <div class="form-group">	
 									  <div class="col-sm-3"></div>
-									  <button id="buttonSearch" class="col-sm-1" type="submit" class="btn btn-default">Search</button>
+									  <button id="buttonSearch" class="col-sm-3" type="submit" class="btn btn-default"><a href="index.html">Search</a></button>
 								  </div>
 								  
 								  
@@ -144,18 +150,18 @@
                     //alert("wew");
                     
                    $origin = $('#input_origin').val();
-                        alert($origin);
+                        //alert($origin);
                     $outbounddate = $('#input_outbounddate').val();
-                        alert($outbounddate);
+                       // alert($outbounddate);
                     $destination = $('#input_destination').val();
-                        alert($destination);
+                       // alert($destination);
                     $inbounddate = $('#input_inbounddate').val();
-                        alert($inbounddate);
+                       // alert($inbounddate);
                     $persons = $('#input_persons').val(); 
                     
                     if($outbounddate == "" || $origin == "")
                     {
-                        alert("origin and outbounddate is required");
+                        //alert("origin and outbounddate is required");
                     }
                     else
                     {   
@@ -179,7 +185,7 @@
 					},
 					error : function(jqXHR, textStatus, errorThrown)
 					{
-						alert(jqXHR.responseText + " c " + jqXHR.readyState + " " + errorThrown);
+						//alert(jqXHR.responseText + " c " + jqXHR.readyState + " " + errorThrown);
 					}
 				},'json');
                         /*

@@ -47,7 +47,7 @@
                 url:        'http://partners.api.skyscanner.net/apiservices/hotels/liveprices/v2/ID/IDR/id-ID/27539774/2014-12-04/2014-12-10/2/1?apiKey=ah395258861593902161819075536914',
 
                 success: function(response){
-                    alert('in');
+                    //alert('in');
                     //$('#namaHotel').text(response['hotels'][0]['name']);
                     var obj = response['hotels'];
                     //alert(obj);
@@ -141,13 +141,13 @@
 		<section class="s_middle_display" style="">
 			<div class="container-fluid" style="">
 				<div class="row f_elast one" style="border-top: 1px solid #787878; position: relative; overflow-y: scroll; overflow-x: hidden;">
-                    <div class="f_faker"></div>
+                    <div class="f_faker">Most Viewed <span class="glyphicon glyphicon-eye-open pull-right"></span></div>
                     <div class="col-lg-12">
 						<div class="f_suggest_node form-horizontal ">
                               <div class="form-group">
                                 <label for="" class="col-sm-2 control-label">Flight</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control-static" id="">Hyperion</p>
+                                    <p class="form-control-static" id="flight_one">Hyperion</p>
                                 </div>
                               </div>
                               <div class="form-group">
@@ -166,7 +166,7 @@
                               <div class="form-group">
                                 <label for="" class="col-sm-2 control-label">Flight</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control-static" id="">Hyperion</p>
+                                    <p class="form-control-static" id="flight_one_2">Hyperion</p>
                                 </div>
                               </div>
                               <div class="form-group">
@@ -184,13 +184,13 @@
 					</div>
 				</div>
 				<div class="row f_elast two" style="border-top: 1px solid #787878; position: relative; overflow-y: scroll; overflow-x: hidden;">
-					<div class="f_faker"></div>
+					<div class="f_faker">Top Rated <span class="glyphicon glyphicon-thumbs-up pull-right"></span></div>
                     <div class="col-lg-12">
 						<div class="f_suggest_node form-horizontal">
                               <div class="form-group">
                                 <label for="" class="col-sm-2 control-label">Flight</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control-static" id="">Hyperion</p>
+                                    <p class="form-control-static" id="flight_two">Hyperion</p>
                                 </div>
                               </div>
                               <div class="form-group">
@@ -207,7 +207,7 @@
                               <div class="form-group">
                                 <label for="" class="col-sm-2 control-label">Flight</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control-static" id="">Hyperion</p>
+                                    <p class="form-control-static" id="flight_two_2">Hyperion</p>
                                 </div>
                               </div>
                               <div class="form-group">
@@ -223,14 +223,14 @@
 					</div>
 				</div>
 				<div class="row f_elast three" style="border-top: 1px solid #787878; position: relative; overflow-y: scroll; overflow-x: hidden;">
-					<div class="f_faker"></div>
+                    <div class="f_faker">Best Price <span class="glyphicon glyphicon-usd pull-right"></span></div>
                     <div class="col-lg-12">
 
 						<div class="f_suggest_node form-horizontal">
                               <div class="form-group">
                                 <label for="" class="col-sm-2 control-label">Flight</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control-static" id="">Hyperion</p>
+                                    <p class="form-control-static" id="flight_three">Hyperion</p>
                                 </div>
                               </div>
                               <div class="form-group">
@@ -247,7 +247,7 @@
                               <div class="form-group">
                                 <label for="" class="col-sm-2 control-label">Flight</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control-static" id="">Hyperion</p>
+                                    <p class="form-control-static" id="flight_three_2">Hyperion</p>
                                 </div>
                               </div>
                               <div class="form-group">
@@ -269,6 +269,14 @@
         .unremoved{
             overflow: hidden;
         }
+        
+        .f_faker {
+            font-family: got_book;
+            font-size: 2em;
+            text-transform: uppercase;
+            
+            padding: 10px 10px 0px 10px;
+        }
     </style>
 		<script>
             var width = window.innerWidth;
@@ -282,8 +290,8 @@
                 $('.f_elast').height(height03);
                 
                 $('.f_elast').addClass('unremoved');
-                $('.f_faker').height(height03).width(width).css('display','block').css('z-index','999').css('background-color','#213232').css('position','absolute').css('top','0px').css('left','0px');
-            
+                $('.f_faker').height(height03).width(width).css('display','block').css('z-index','999').css('background-color','#ffffff').css('position','absolute').css('top','0px').css('left','0px');
+                
             });	
 
 			$('body').on('click', '.f_elast', function(){
@@ -297,7 +305,10 @@
                 $(this).siblings('.f_elast').children('.f_faker').css('display','block');
                 
                 $(this).children('.f_faker').css('display','none');
-
+                
+                $(this).siblings('.f_elast').find('.f_suggest_node').css('display','none');
+                $(this).find('.f_suggest_node').css('display','block');
+                
 				$(this).siblings('.f_elast').animate({
 					height: height01
 				}, 370, function() {
@@ -342,13 +353,171 @@
             
             $(document).ready(function(){
             
+                
+                //search flight
+                var flight_one = "";
+                var flight_one_2 = "";                
+                var flight_two = "";
+                var flight_two_2 = "";
+                var flight_three = "";
+                var flight_three_2 = "";                
+                $(document).ready(function(){
+                    $.ajax({
+                        dataType: 'json',
+                        type: 'GET',
+                        url: 'http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/ID/IDR/id-ID/CN/ID/2014-11-20/2014-11-24?apiKey=ah395258861593902161819075536914',
+                        success: function(response){
+                            var quotes = response['Quotes'];
+                            var maskapai = response['Carriers'];                                            
+                            
+                if(quotes.length > 0)
+                {
+                            
+                    if(quotes.length >= 1)
+                    {
+                //FLIGHT ROW 1
+                            flight_one += "harga minimal : " +toRp(quotes[0]['MinPrice'])+ "<br />";
+                            flight_one += "maskapai keberangkatan : " + getMaskapaiName(maskapai, quotes[0]['OutboundLeg']['CarrierIds']) + "<br />";
+                            flight_one += "tanggal keberangkatan : " +quotes[0]['OutboundLeg']['DepartureDate'].substring(0, 10) + "<br />";
+                            flight_one += "maskapai kepulangan : " + getMaskapaiName(maskapai, quotes[0]['InboundLeg']['CarrierIds']) + "<br />";
+                            flight_one += "tanggal kepulangan : " +quotes[0]['InboundLeg']['DepartureDate'].substring(0, 10) + "<br />";
+                        
+                        $('#flight_one').html(flight_one);
+                    }
+                    else
+                    {
+                        $('#flight_one').html("no flight");
+                    }
+                    
+                    if(quotes.length >= 2)
+                    {
+                            flight_one_2 += "harga minimal : " +toRp(quotes[1]['MinPrice'])+ "<br />";
+                            flight_one_2 += "maskapai keberangkatan : " + getMaskapaiName(maskapai, quotes[1]['OutboundLeg']['CarrierIds']) + "<br />";
+                            flight_one_2 += "tanggal keberangkatan : " +quotes[1]['OutboundLeg']['DepartureDate'].substring(0, 10) + "<br />";
+                            flight_one_2 += "maskapai kepulangan : " + getMaskapaiName(maskapai, quotes[1]['InboundLeg']['CarrierIds']) + "<br />";
+                            flight_one_2 += "tanggal kepulangan : " +quotes[1]['InboundLeg']['DepartureDate'].substring(0, 10) + "<br />";
+                    
+                         
+                         $('#flight_one_2').html(flight_one_2);
+                    }
+                    else
+                    {
+                         $('#flight_one_2').html("no flight");
+                     
+                    }
+                            
+                //FLIGHT ROW 2
+                            
+                    if(quotes.length >= 3)
+                    {
+                            flight_two += "harga minimal : " +toRp(quotes[2]['MinPrice'])+ "<br />";
+                            flight_two += "maskapai keberangkatan : " + getMaskapaiName(maskapai, quotes[2]['OutboundLeg']['CarrierIds']) + "<br />";
+                            flight_two += "tanggal keberangkatan : " +quotes[2]['OutboundLeg']['DepartureDate'].substring(0, 10) + "<br />";
+                            flight_two += "maskapai kepulangan : " + getMaskapaiName(maskapai, quotes[2]['InboundLeg']['CarrierIds']) + "<br />";
+                            flight_two += "tanggal kepulangan : " +quotes[2]['InboundLeg']['DepartureDate'].substring(0, 10) + "<br />";
+                    
+                         
+                         $('#flight_two').html(flight_two);
+                    }
+                    else
+                    {
+                         $('#flight_two').html("no flight");
+                     
+                    }
+                           
+                    if(quotes.length >= 4)
+                    {
+                            flight_two_2 += "harga minimal : " +toRp(quotes[3]['MinPrice'])+ "<br />";
+                            flight_two_2 += "maskapai keberangkatan : " + getMaskapaiName(maskapai, quotes[3]['OutboundLeg']['CarrierIds']) + "<br />";
+                            flight_two_2 += "tanggal keberangkatan : " +quotes[3]['OutboundLeg']['DepartureDate'].substring(0, 10) + "<br />";
+                            flight_two_2 += "maskapai kepulangan : " + getMaskapaiName(maskapai, quotes[3]['InboundLeg']['CarrierIds']) + "<br />";
+                            flight_two_2 += "tanggal kepulangan : " +quotes[3]['InboundLeg']['DepartureDate'].substring(0, 10) + "<br />";
+                    
+                         
+                         $('#flight_two_2').html(flight_two_2);
+                    }
+                    else
+                    {
+                         $('#flight_two_2').html("no flight");
+                     
+                    }
+                            
+                //FLIGHT ROW 3            
+                     
+                    if(quotes.length >= 5)
+                    {
+                            flight_three += "harga minimal : " +toRp(quotes[4]['MinPrice'])+ "<br />";
+                            flight_three += "maskapai keberangkatan : " + getMaskapaiName(maskapai, quotes[4]['OutboundLeg']['CarrierIds']) + "<br />";
+                            flight_three += "tanggal keberangkatan : " +quotes[4]['OutboundLeg']['DepartureDate'].substring(0, 10) + "<br />";
+                            flight_three += "maskapai kepulangan : " + getMaskapaiName(maskapai, quotes[4]['InboundLeg']['CarrierIds']) + "<br />";
+                            flight_three += "tanggal kepulangan : " +quotes[4]['InboundLeg']['DepartureDate'].substring(0, 10) + "<br />";
+                    
+                         
+                         $('#flight_three').html(flight_three);
+                    }
+                    else
+                    {
+                         $('#flight_three').html("no flight");
+                     
+                    }
+            
+                    if(quotes.length >= 6)
+                    {
+                            flight_three_2 += "harga minimal : " +toRp(quotes[5]['MinPrice'])+ "<br />";
+                            flight_three_2 += "maskapai keberangkatan : " + getMaskapaiName(maskapai, quotes[5]['OutboundLeg']['CarrierIds']) + "<br />";
+                            flight_three_2 += "tanggal keberangkatan : " +quotes[5]['OutboundLeg']['DepartureDate'].substring(0, 10) + "<br />";
+                            flight_three_2 += "maskapai kepulangan : " + getMaskapaiName(maskapai, quotes[5]['InboundLeg']['CarrierIds']) + "<br />";
+                            flight_three_2 += "tanggal kepulangan : " +quotes[5]['InboundLeg']['DepartureDate'].substring(0, 10) + "<br />";
+                    
+                         
+                         $('#flight_three_2').html(flight_three_2);
+                    }
+                    else
+                    {
+                         $('#flight_three_2').html("no flight");
+                     
+                    }
+                    
+                }
+                else
+                {
+                    $('#flight_one').html("no flight");
+                    $('#flight_one_2').html("no flight");
+                            
+                    $('#flight_two').html("no flight");
+                    $('#flight_two_2').html("no flight");
+
+                    $('#flight_three').html("no flight");
+                    $('#flight_three_2').html("no flight");
+                }
+                                                       
+                            
+                            //var maskapai = response['Carriers'][0]['CarrierId'];
+                            //alert(response['Quotes'][0]['MinPrice']);
+                            //alert(response['Quotes'][0]['OutboundLeg']['DepartureDate']);
+                            //alert(response['Quotes'][0]['OutboundLeg']['CarrierIds']);
+                  //          var departure = response['Quotes'][0]['OutboundLeg']['DepartureDate'];                            
+               ///             alert(departure.substring(0, 10));
+                        
+                        
+                        },
+                        error: function(jqXHR, textStatus, errorThrown){
+                            alert("error");
+                        }
+                    });
+                });
+                //end search flight                                               
+                
+                
+                
+                
                 $.ajax({
                 dataType: 'json',
                 type: 'GET',
                 url:        'http://partners.api.skyscanner.net/apiservices/hotels/liveprices/v2/ID/IDR/id-ID/27539774/2014-12-04/2014-12-10/2/1?apiKey=ah395258861593902161819075536914',
 
                 success: function(response){
-                    alert('in');
+                    //alert('in');
                     //$('#namaHotel').text(response['hotels'][0]['name']);
                     var obj = response['hotels'];
                     var obj2 = response['hotels_prices'];
@@ -457,14 +626,14 @@
                     tess5 = tess5 + "http://d1bko2jzh7ix12.cloudfront.net"+arr5[0].substring(1,arr5[0].length)+arr5[1].trim().substring(1,arr5[1].length);
                     tes5 = tes5+"nama hotel : "+obj[idtemp1].name+"<br />";
                     tes5 = tes5+"harga : "+ toRp(obj2[idtemp1].agent_prices[0].price_total);+"<br />";
-                    tes5 = tes5+"<input type='hidden' value='"+id1+"' >";
-                    tes5 = tes5 + "<button class='but'>Pick</button>";
+                    tes5 = tes5+"<input type='hidden' value='"+id1+"' > <br />";
+                    tes5 = tes5 + "<a href='result.html?id="+id1+"&url="+response['urls'].hotel_details+"' class='but'>Pick</a>";
                     
                     tess6 = tess6 + "http://d1bko2jzh7ix12.cloudfront.net"+arr6[0].substring(1,arr6[0].length)+arr6[1].trim().substring(1,arr6[1].length);
                     tes6 = tes6+"nama hotel : "+obj[idtemp2].name+"<br />";
                     tes6 = tes6+"harga : "+ toRp(obj2[idtemp2].agent_prices[0].price_total);+"<br />";
-                     tes6 = tes6+"<input type='hidden' value='"+id2+"' >";
-                    tes6 = tes6 + "<a href='result.html?id=1' class='but'>Pick</a>";
+                     tes6 = tes6+"<input type='hidden' value='"+id2+"' > <br />";
+                    tes6 = tes6 + "<a href='result.html?id="+id2+"&url="+response['urls'].hotel_details+"' class='but'>Pick</a>";
                     
                     $('#oneone').html(tes);
                     $('#onetwo').html(tes2);
@@ -483,6 +652,7 @@
                     
                     $('#threeonepic').attr("src",tess5);
                     $('#threetwopic').attr("src",tess6);
+                    
                     return true;
                 },error: function(xhr, textStatus, errorThrown){
                     alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status);
@@ -546,6 +716,18 @@
                 }
                 return 'Rp ' + rev2.split('').reverse().join('')+',-';
                 //return 'IDR ' + rev2.split('').reverse().join('') + ',00';
+            }
+            
+            function getMaskapaiName(arr, id)
+            {
+                for($i = 0; $i < arr.length; $i++)
+                {
+                    if(arr[$i]['CarrierId'] == id)
+                    {
+                        return arr[$i]['Name'];
+                    }
+                }
+                    return "";
             }
             
             //$('body').on('click','.but',function(){
